@@ -36,7 +36,6 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.liquibase:liquibase-core')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.session:spring-session')
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -49,7 +48,7 @@ dependencies {
 }
 
 flyway{
-    url = 'jdbc:postgresql://localhost:5432/postgres'
-    user = 'postgres'
-    password = 'root'
+    url = 'jdbc:postgresql://localhost:5432/testdb'
+    user = 'username'
+    password = 'password'
 }

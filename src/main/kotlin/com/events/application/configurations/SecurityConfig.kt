@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.method.configuration.Globa
  */
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = false) //FIXME
 class SecurityConfig : GlobalMethodSecurityConfiguration() {
 
     @Autowired

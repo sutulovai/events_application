@@ -40,7 +40,7 @@ class DataBaseConfig : TransactionManagementConfigurer {
     @Value("\${hibernate.dialect}")
     private val dialect: String? = null
 
-    @Bean
+    @Bean("entityManagerFactory")
     fun configureEntityManagerFactory(): LocalContainerEntityManagerFactoryBean {
         val entityManagerFactoryBean = LocalContainerEntityManagerFactoryBean()
         entityManagerFactoryBean.dataSource = configureDataSource()
@@ -54,7 +54,7 @@ class DataBaseConfig : TransactionManagementConfigurer {
         return entityManagerFactoryBean
     }
 
-    @Bean
+    @Bean("dataSource")
     fun configureDataSource(): DataSource {
         val config = DriverManagerDataSource()
         config.setDriverClassName(driver)

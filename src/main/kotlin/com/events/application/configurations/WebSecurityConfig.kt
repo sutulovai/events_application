@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired
  * Web security configuration
  */
 
-@EnableWebSecurity
+//@EnableWebSecurity//FIXME
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {

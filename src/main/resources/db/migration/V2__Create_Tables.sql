@@ -3,7 +3,7 @@
 
 create table events.users
 (
-  id serial,
+  id serial primary key,
   users_login character(100) not null,
   users_password varchar(1000),
   full_name varchar(300),
@@ -36,7 +36,6 @@ create table events.events
   event_name character(300),
   date_start date,
   owner_id int not null,
-  column_6 int,
   is_protected_event boolean,
   qr_enable boolean,
   description varchar(4000)
