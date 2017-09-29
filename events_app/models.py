@@ -1,8 +1,8 @@
 from django.db import models
 
 
+# Model for Users
 class User(models.Model):
-    # Model for Users
     name = models.CharField(max_length=255)
     email = models.EmailField(null=True)
     age = models.IntegerField(null=True)
@@ -12,8 +12,8 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
 
+# Model for Events
 class Event(models.Model):
-    # Model for Events
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -27,22 +27,22 @@ class Event(models.Model):
     # TODO PHOTO
 
 
+# Model for participants
 class Participant(models.Model):
-    # Model for participants
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
+# Model for locations
 class Location(models.Model):
-    # Model for locations
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
 
+# Model for checkpoints
 class CheckPoint(models.Model):
-    # Model for checkpoints
     name = models.CharField(max_length=255)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     latitude = models.FloatField()
@@ -51,8 +51,8 @@ class CheckPoint(models.Model):
     # TODO PHOTO
 
 
+# Model for passed checkpoints
 class PassedCheckpoints(models.Model):
-    # Model for passed checkpoints
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
     checkpoint = models.ForeignKey(CheckPoint, on_delete=models.CASCADE)
     total_time = models.IntegerField()
@@ -60,8 +60,8 @@ class PassedCheckpoints(models.Model):
     description = models.CharField(max_length=4000, null=True)
 
 
+# Model for time slices
 class TimeSlices(models.Model):
-    # Model for time slices
     checkpoint_from = models.ForeignKey(CheckPoint, on_delete=models.CASCADE, related_name='checkpoint_from')
     checkpoint_to = models.ForeignKey(CheckPoint, on_delete=models.CASCADE, related_name='checkpoint_to')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
